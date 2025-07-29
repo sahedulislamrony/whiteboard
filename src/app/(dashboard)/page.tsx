@@ -2,13 +2,12 @@
 
 import React, { useRef } from 'react';
 import { toast } from 'sonner';
-import { WhiteboardProvider } from '@/contexts/WhiteboardContext';
-import { WhiteboardCanvas } from '@/components/WhiteboardCanvas';
-import { WhiteboardToolbar } from '@/components/WhiteboardToolbar';
+import WhiteboardCanvas from '@/components/WhiteboardCanvas';
+import WhiteboardToolbar from '@/components/WhiteboardToolbar';
 import { exportWhiteboard } from '@/utils/export';
 import { ExportFormat } from '@/types/whiteboard';
 
-export default function HomePage() {
+export default function WhiteboardPage() {
   const canvasContainerRef = useRef<HTMLDivElement>(null);
 
   const handleExport = async (format: ExportFormat) => {
@@ -26,16 +25,14 @@ export default function HomePage() {
   };
 
   return (
-    <WhiteboardProvider>
-      <div className="h-screen flex flex-col bg-gray-50">
-        <WhiteboardToolbar onExport={handleExport} />
-        
-        <div className="flex-1 overflow-hidden">
-          <div ref={canvasContainerRef} className="w-full h-full">
-            <WhiteboardCanvas className="w-full h-full" />
-          </div>
+    <div className="h-screen flex flex-col bg-gray-50">
+      <WhiteboardToolbar onExport={handleExport} />
+      
+      <div className="flex-1 overflow-hidden">
+        <div ref={canvasContainerRef} className="w-full h-full">
+          <WhiteboardCanvas className="w-full h-full" />
         </div>
       </div>
-    </WhiteboardProvider>
+    </div>
   );
 }
