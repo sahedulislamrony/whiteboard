@@ -1,4 +1,4 @@
-import html2canvas from 'html2canvas';
+
 import jsPDF from 'jspdf';
 import { toast } from 'sonner';
 import { ExportFormat } from '@/types/whiteboard';
